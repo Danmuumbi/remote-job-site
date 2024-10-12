@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job - Remote Job Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Remote Job Search</a>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2>Post a New Job</h2>
+                <form method="POST" action="/post_job">
+                    <div class="form-group">
+                        <label for="job_title">Job Title</label>
+                        <input type="text" class="form-control" id="job_title" name="job_title" placeholder="Enter job title">
+                    </div>
+                    <div class="form-group">
+                        <label for="job_type">Job Type</label>
+                        <select class="form-control" id="job_type" name="job_type">
+                            <option value="full_time">Full-time</option>
+                            <option value="part_time">Part-time</option>
+                            <option value="contract">Contract</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="job_description">Job Description</label>
+                        <textarea class="form-control" id="job_description" name="job_description" rows="4" placeholder="Enter job description"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Post Job</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
+    </footer>
+</body>
+</html>
