@@ -1,0 +1,91 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ job.title }} - Job Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Remote Job Search</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2>{{ job.title }}</h2>
+        <p><strong>Job Type:</strong> {{ job.job_type }}</p>
+        <p><strong>Description:</strong> {{ job.description }}</p>
+        <p><strong>Requirements:</strong> {{ job.requirements }}</p>
+        <p><strong>Posted On:</strong> {{ job.posted_at }}</p>
+
+        <a href="{{ url_for('apply_job', job_id=job.id) }}" class="btn btn-success">Apply for this Job</a>
+
+
+        <a href="{{ url_for('premium_content') }}" class="btn btn-primary">Back to Premium Jobs</a>
+    </div>
+
+    
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ job.title }} - Job Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Remote Job Search</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Job Details -->
+    <div class="container mt-5">
+        <h2>{{ job.title }}</h2>
+        <p><strong>Job Type:</strong> {{ job.job_type }}</p>
+        <p><strong>Description:</strong> {{ job.description }}</p>
+        <p><strong>Requirements:</strong> {{ job.requirements }}</p>
+        <p><strong>Posted On:</strong> {{ job.posted_at }}</p>
+
+        <!-- Button to Apply for Job -->
+        <a href="{{ url_for('apply_job', job_id=job.id) }}" class="btn btn-success">Apply for this Job</a>
+
+        <a href="{{ url_for('premium_content') }}" class="btn btn-primary">Back to Premium Jobs</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

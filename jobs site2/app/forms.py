@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField, TextAreaField, BooleanField
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms import StringField, PasswordField, TextAreaField, SelectField, SubmitField
+from wtforms.validators import DataRequired, Email
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -11,11 +11,20 @@ class SignupForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    user_type = SelectField('Register as', choices=[('user', 'User'), ('employer', 'Employer')])
+    user_type = SelectField('Sign Up as', choices=[('user', 'Job Seeker'), ('employer', 'Employer')], validators=[DataRequired()])
     submit = SubmitField('Sign Up')
 
-class JobPostForm(FlaskForm):
+class PostJobForm(FlaskForm):
     title = StringField('Job Title', validators=[DataRequired()])
     description = TextAreaField('Job Description', validators=[DataRequired()])
-    job_type = SelectField('Job Type', choices=[('Software Engineer', 'Software Engineer'), ('Designer', 'Designer')])  # Extend this
+    job_type = SelectField('Job Type', choices=[
+        ('full_time', 'Full Time'),
+        ('part_time', 'Part Time'),
+        ('contract', 'Contract'),
+        ('internship', 'Internship'),
+    ], validators=[DataRequired()])
     submit = SubmitField('Post Job')
+
+
+
+

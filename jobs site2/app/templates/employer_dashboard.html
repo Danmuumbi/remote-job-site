@@ -11,29 +11,46 @@
         <a class="navbar-brand" href="/">Remote Job Search</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="/post_job">Post a Job</a></li>
-                <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('post_job') }}">Post a Job</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container mt-5">
-        <h2>Welcome, Employer!</h2>
-        <a href="/post_job" class="btn btn-primary">Post a New Job</a>
+        <h2>Welcome, {{ current_user.username }}!</h2>
+        <a href="{{ url_for('post_job') }}" class="btn btn-primary mb-3">Post a New Job</a>
 
         <h4 class="mt-5">Jobs You've Posted</h4>
+
         <ul class="list-group mt-3">
-            <li class="list-group-item">
-                <strong>Software Engineer</strong> - Full-time
-                <a href="/view_applicants" class="btn btn-info btn-sm ml-2">View Applicants</a>
-                <a href="/remove_job" class="btn btn-danger btn-sm ml-2">Remove Job</a>
-            </li>
-            <li class="list-group-item">No jobs posted yet.</li>
+            {% if jobs %}
+                {% for job in jobs %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <strong>{{ job.title }}</strong> - {{ job.job_type }}
+                        <div>
+                            <a href="{{ url_for('view_applicants', job_id=job.id) }}" class="btn btn-info btn-sm ml-2">View Applicants</a>
+                            
+                            <!-- Form for removing the job -->
+                            <form action="{{ url_for('remove_job', job_id=job.id) }}" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-danger btn-sm ml-2">Remove Job</button>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="list-group-item">No jobs posted yet.</li>
+            {% endif %}
         </ul>
+        
     </div>
 
     <footer class="text-center mt-5">
         <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
