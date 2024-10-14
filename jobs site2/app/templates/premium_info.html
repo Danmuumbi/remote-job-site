@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Membership Benefits</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Color palette matching site colors */
+        body {
+            background-color: #f3f3f3;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #2c3e50, #004085);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .hero-section h3 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .card-header {
+            background-color: #004085;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 15px;
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            color: #0069d9;
+        }
+
+        .feature-list {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+
+        .cta-btn {
+            margin-top: 20px;
+        }
+
+        .cta-btn a {
+            margin: 10px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 40px 10px;
+            }
+
+            .hero-section h3 {
+                font-size: 2rem;
+            }
+
+            .feature-icon {
+                font-size: 3rem;
+            }
+
+            .cta-btn a {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">Remote Job Search</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user_dashboard">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container mt-5 hero-section">
+        <h3>Upgrade to Premium and Unlock Exclusive Features!</h3>
+        <p>Boost your job search with features designed to accelerate your success. Discover the benefits of going premium today.</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Why Upgrade to Premium?</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center">Premium members enjoy exclusive benefits tailored for success in the remote job market.</p>
+                        
+                        <!-- Feature Icons Section -->
+                        <div class="row text-center my-4">
+                            <div class="col-md-4">
+                                <i class="feature-icon fas fa-briefcase"></i>
+                                <h5 class="mt-3">Exclusive Job Listings</h5>
+                                <p>Get access to jobs only visible to premium members.</p>
+                            </div>
+                            <div class="col-md-4">
+                                <i class="feature-icon fas fa-headset"></i>
+                                <h5 class="mt-3">Priority Support</h5>
+                                <p>Receive personalized career advice and 24/7 support.</p>
+                            </div>
+                            <div class="col-md-4">
+                                <i class="feature-icon fas fa-bell"></i>
+                                <h5 class="mt-3">Custom Job Alerts</h5>
+                                <p>Set tailored job alerts to get notified of jobs matching your preferences.</p>
+                            </div>
+                        </div>
+
+                        <!-- Additional Features -->
+                        <div class="mt-4">
+                            <h4>Additional Premium Benefits:</h4>
+                            <ul class="feature-list">
+                                <li>In-depth company insights and employer reviews.</li>
+                                <li>Access to exclusive webinars and career workshops.</li>
+                                <li>Higher visibility for your job applications to recruiters.</li>
+                                <li>Ad-free browsing for a distraction-free experience.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Call to Action Buttons -->
+                        <div class="cta-btn text-center">
+                            <a href="/premium" class="btn btn-primary btn-lg">Enter Passkey</a>
+                            <a href="/contact" class="btn btn-secondary btn-lg">Contact Support</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How to Upgrade Section -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3>How to Upgrade to Premium</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Becoming a Premium member is easy. Just follow these steps:</p>
+                        <ol>
+                            <li>Visit your dashboard and select the "Upgrade to Premium" option.</li>
+                            <li>Choose the Premium plan that best suits your needs.</li>
+                            <li>Complete the secure payment process.</li>
+                            <li>Enjoy instant access to all Premium features!</li>
+                        </ol>
+                        <p>If you need help during the upgrade, our support team is available to assist you.</p>
+                        <div class="text-center mt-3">
+                            <a href="/upgrade" class="btn btn-success btn-lg">Upgrade Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+
+</html>

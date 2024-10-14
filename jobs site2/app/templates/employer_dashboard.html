@@ -5,49 +5,247 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employer Dashboard - Remote Job Search</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        .dashboard-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .job-list {
+            margin-top: 30px;
+        }
+        .job-list .list-group-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        .job-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .welcome-banner {
+            background-image: url('https://media.istockphoto.com/id/1292660038/photo/laptop-with-charts-and-graphs.jpg?s=1024x1024&w=is&k=20&c=OcMOqv-2Ehc5CZH55MzD1z6Lnh8MiV5_u_VYkfhi_kw='); /* Replace with actual image URL */
+            background-size: cover;
+            background-position: center;
+            padding: 50px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: #fff;
+        }
+        .icon {
+            font-size: 1.5rem;
+            color: #007bff;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav   class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">Remote Job Search</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ url_for('post_job') }}">Post a Job</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('edit_profile') }}">Edit Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container mt-5">
-        <h2>Welcome, {{ current_user.username }}!</h2>
-        <a href="{{ url_for('post_job') }}" class="btn btn-primary mb-3">Post a New Job</a>
+        <!-- Welcome Section with Banner -->
+        <div class="welcome-banner">
+            <h1>Welcome, {{ current_user.username }}!</h1>
+            <p>Let's find the best candidates for your open positions.</p>
+        </div>
 
-        <h4 class="mt-5">Jobs You've Posted</h4>
+        <!-- Real Job Posting Actions -->
+        <a href="{{ url_for('post_job') }}" class="btn btn-primary mb-3 mt-4"><i class="fas fa-plus-circle"></i> Post a New Job</a>
 
-        <ul class="list-group mt-3">
+        <!-- Job List Section -->
+        <h4 class="mt-5"><i class="fas fa-briefcase icon"></i> Jobs You've Posted</h4>
+        <ul class="list-group job-list mt-3">
             {% if jobs %}
                 {% for job in jobs %}
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <strong>{{ job.title }}</strong> - {{ job.job_type }}
+                    <li class="list-group-item">
                         <div>
-                            <a href="{{ url_for('view_applicants', job_id=job.id) }}" class="btn btn-info btn-sm ml-2">View Applicants</a>
-                            
-                            <!-- Form for removing the job -->
+                            <strong>{{ job.title }}</strong> - {{ job.job_type }} 
+                        </div>
+                        <div class="job-actions">
+                            <a href="{{ url_for('view_applicants', job_id=job.id) }}" class="btn btn-info btn-sm"><i class="fas fa-users"></i> View Applicants</a>
+                            <a href="{{ url_for('edit_job', job_id=job.id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
                             <form action="{{ url_for('remove_job', job_id=job.id) }}" method="POST" style="display: inline;">
-                                <button type="submit" class="btn btn-danger btn-sm ml-2">Remove Job</button>
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Remove</button>
                             </form>
                         </div>
                     </li>
                 {% endfor %}
             {% else %}
-                <li class="list-group-item">No jobs posted yet.</li>
+                <li class="list-group-item">No jobs posted yet. Start by posting your first job!</li>
             {% endif %}
         </ul>
-        
+
+        <!-- Testimonials or Static Employer Tips Section -->
+        <div class="mt-5">
+            <h4><i class="fas fa-lightbulb icon"></i> Tips for Employers</h4>
+            <p>Hiring remote talent is all about clear communication, strong onboarding, and setting expectations from the start. Consider offering flexible hours to attract the best talent!</p>
+        </div>
+
+        <!-- Imagery or Advertisement Section -->
+        <div class="mt-5">
+            <h4><i class="fas fa-bullhorn icon"></i> Advertise Your Jobs Effectively</h4>
+            <p>Reach thousands of job seekers by promoting your jobs on our platform.</p>
+            <img src="https://www.shutterstock.com/image-photo/man-having-business-meeting-signing-260nw-1332753899.jpg" alt="Advertise your job" class="img-fluid" /> <!-- Replace with actual image URL -->
+        </div>
     </div>
 
-    <footer class="text-center mt-5">
+    <!-- <footer>
         <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
-    </footer>
+    </footer> -->
+
+    <!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <!-- Footer Top Section -->
+        <div class="row">
+            <!-- About Us Section -->
+            <div class="col-md-4">
+                <h5>About Remote Job Search</h5>
+                <p>We help companies find the best remote talent while providing job seekers access to a wide range of opportunities. Join us in shaping the future of work.</p>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Post a Job</a></li>
+                    <li><a href="#">Browse Jobs</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Signup Section -->
+            <div class="col-md-4">
+                <h5>Stay Updated</h5>
+                <p>Subscribe to our newsletter to receive the latest job postings and hiring tips!</p>
+                <form action="#" class="newsletter-form">
+                    <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email">
+                    <button type="submit" class="btn btn-primary mt-2">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="footer-divider">
+
+        <!-- Social Icons and Copyright Section -->
+        <div class="footer-bottom row">
+            <div class="col-md-6 text-center text-md-left">
+                <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-right">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- CSS Styling for the Footer -->
+<style>
+    .footer {
+        background-color: #343a40;
+        color: #fff;
+        padding: 40px 0;
+    }
+    .footer h5 {
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+        color: #f8f9fa;
+    }
+    .footer p {
+        font-size: 0.9rem;
+        color: #dcdcdc;
+    }
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+    .footer-links li a {
+        color: #f8f9fa;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+    .footer-links li a:hover {
+        color: #007bff;
+        text-decoration: underline;
+    }
+    .newsletter-form input {
+        background-color: #495057;
+        border: none;
+        padding: 10px;
+        color: #fff;
+    }
+    .newsletter-form input::placeholder {
+        color: #dcdcdc;
+    }
+    .newsletter-form button {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        color: #fff;
+        cursor: pointer;
+    }
+    .newsletter-form button:hover {
+        background-color: #0056b3;
+    }
+    .footer-divider {
+        border-top: 1px solid #495057;
+        margin: 30px 0;
+    }
+    .social-icons a {
+        color: #fff;
+        margin: 0 10px;
+        font-size: 1.2rem;
+    }
+    .social-icons a:hover {
+        color: #007bff;
+    }
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    @media (max-width: 767px) {
+        .footer-bottom {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+</style>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

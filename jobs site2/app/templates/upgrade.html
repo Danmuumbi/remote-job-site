@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrade to Premium</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* General Styling */
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #004085;
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+
+        .pricing-header {
+            background: linear-gradient(135deg, #0069d9, #004085);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .pricing-header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .pricing-header p {
+            font-size: 1.2rem;
+        }
+
+        /* Pricing Card */
+        .pricing-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pricing-card-header {
+            background-color: #004085;
+            color: #fff;
+            padding: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .pricing-card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .pricing-card-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pricing-card-body li {
+            margin: 10px 0;
+        }
+
+        .pricing-card-footer {
+            background-color: #f4f6f9;
+            padding: 15px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+        }
+
+        .pricing-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .pricing-header h1 {
+                font-size: 2rem;
+            }
+
+            .pricing-card-body li {
+                font-size: 0.9rem;
+            }
+
+            .pricing-btn {
+                font-size: 1rem;
+            }
+        }
+
+        footer {
+            background-color: #004085;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="/">Remote Job Search</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user_dashboard">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Pricing Header -->
+    <div class="container mt-5 pricing-header">
+        <h1>Choose Your Premium Plan</h1>
+        <p>Unlock exclusive features and accelerate your job search. Select the plan that fits your needs.</p>
+    </div>
+
+    <!-- Pricing Plans -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Basic Plan -->
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <div class="pricing-card-header">Basic Plan</div>
+                    <div class="pricing-card-body">
+                        <ul>
+                            <li>Access to exclusive job listings</li>
+                            <li>Priority application processing</li>
+                            <li>Custom job alerts</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card-footer">
+                        <a href="/process_payment/basic" class="btn btn-primary pricing-btn">Upgrade for $5/month</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Standard Plan -->
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <div class="pricing-card-header">Standard Plan</div>
+                    <div class="pricing-card-body">
+                        <ul>
+                            <li>All Basic features</li>
+                            <li>Career guidance & counseling</li>
+                            <li>Exclusive access to webinars</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card-footer">
+                        <a href="/process_payment/standard" class="btn btn-success pricing-btn">Upgrade for $15/month</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Premium Plan -->
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <div class="pricing-card-header">Premium Plan</div>
+                    <div class="pricing-card-body">
+                        <ul>
+                            <li>All Standard features</li>
+                            <li>Dedicated career coach</li>
+                            <li>Unlimited access to premium job postings</li>
+                            <li>Ad-free experience</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-card-footer">
+                        <a href="/process_payment/premium" class="btn btn-warning pricing-btn">Upgrade for $25/month</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

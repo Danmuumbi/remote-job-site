@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Edit Job - {{ job.title }}</h2>
+        <form action="{{ url_for('edit_job', job_id=job.id) }}" method="POST">
+            <div class="form-group">
+                <label for="title">Job Title</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{ job.title }}" required>
+            </div>
+            <div class="form-group">
+                <label for="job_type">Job Type</label>
+                <input type="text" class="form-control" id="job_type" name="job_type" value="{{ job.job_type }}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Job Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4">{{ job.description }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,66 +1,66 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upgrade to Premium</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-  
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Remote Job Search</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
-                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
-            </ul>
-        </div>
-    </nav>
-
-
-    <div class="container mt-5">
-        <h2>Premium Job Listings</h2>
-        <ul class="list-group mt-3">
-            {% if jobs %}
-                {% for job in jobs %}
-                    <li class="list-group-item">
-                        <strong>{{ job.title }}</strong> - Posted on {{ job.posted_at }}
-                    </li>
-                {% endfor %}
-            {% else %}
-                <li class="list-group-item">No premium jobs available at the moment.</li>
-            {% endif %}
-        </ul>
-    </div>
-
-    
-    <footer class="text-center mt-5">
-        <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html> -->
-
-
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Premium Job Listings</title>
+   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Premium Styling */
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Poppins', sans-serif;
+        }
+        h2 {
+            font-size: 2.5rem;
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .list-group-item {
+            font-size: 1.2rem;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+        .list-group-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            padding: 20px 0;
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .search-bar {
+            margin-bottom: 2rem;
+        }
+        .search-bar input {
+            font-size: 1.2rem;
+            padding: 10px;
+        }
+        .btn-primary {
+            font-size: 1rem;
+            padding: 10px 20px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
+ 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">Remote Job Search</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,19 +69,24 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
-                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user_dashboard">Dashboard</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Main Content -->
+  
     <div class="container mt-5">
         <h2>Premium Job Listings</h2>
-        <ul class="list-group mt-3">
+
+     
+        <div class="search-bar">
+            <input type="text" id="jobSearch" class="form-control" placeholder="Search for jobs by title (e.g., Software Engineer, Developer)" onkeyup="filterJobs()">
+        </div>
+
+        <ul id="jobList" class="list-group">
             {% if jobs %}
                 {% for job in jobs %}
-                    <li class="list-group-item">
+                    <li class="list-group-item job-item">
                         <a href="{{ url_for('job_details', job_id=job.id) }}">
                             <strong>{{ job.title }}</strong> - Posted on {{ job.posted_at }}
                         </a>
@@ -93,7 +98,7 @@
         </ul>
     </div>
 
-    <!-- Footer -->
+  
     <footer class="text-center mt-5">
         <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
     </footer>
@@ -101,5 +106,230 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+    <script>
+        function filterJobs() {
+            const searchInput = document.getElementById("jobSearch").value.toLowerCase();
+            const jobItems = document.querySelectorAll(".job-item");
+
+            jobItems.forEach(function(item) {
+                const jobTitle = item.textContent.toLowerCase();
+                if (jobTitle.includes(searchInput)) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Job Listings</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Premium Styling */
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Poppins', sans-serif;
+            color: #343a40;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #343a40;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #f5f5f5;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d') no-repeat center center/cover;
+            height: 50vh;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        /* Page Heading */
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Job Listings */
+        .job-listing {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .job-item {
+            background-color: #fff;
+            border-radius: 10px;
+            margin: 15px;
+            padding: 20px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .job-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-item a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: 500;
+        }
+
+        .job-item strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+            color: #343a40;
+        }
+
+        /* Search Bar */
+        .search-bar input {
+            font-size: 1.2rem;
+            padding: 15px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            margin-bottom: 2rem;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 20px 0;
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn-primary {
+            font-size: 1rem;
+            padding: 12px 30px;
+            border-radius: 30px;
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="/">Remote Job Search</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/user_dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Premium Job Listings</h1>
+        <p>Access exclusive job opportunities today!</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <h2>Find Your Dream Job</h2>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="jobSearch" class="form-control" placeholder="Search for jobs by title (e.g., Software Engineer, Developer)" onkeyup="filterJobs()">
+        </div>
+
+        <!-- Job Listings -->
+        <div id="jobList" class="job-listing">
+            {% if jobs %}
+                {% for job in jobs %}
+                    <div class="job-item">
+                        <a href="{{ url_for('job_details', job_id=job.id) }}">
+                            <strong>{{ job.title }}</strong>
+                            Posted on {{ job.posted_at }}
+                        </a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="job-item">No premium jobs available at the moment.</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function filterJobs() {
+            const searchInput = document.getElementById("jobSearch").value.toLowerCase();
+            const jobItems = document.querySelectorAll(".job-item");
+
+            jobItems.forEach(function(item) {
+                const jobTitle = item.textContent.toLowerCase();
+                if (jobTitle.includes(searchInput)) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        }
+    </script>
 </body>
 </html>

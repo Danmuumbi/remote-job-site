@@ -5,27 +5,517 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remote Job Search - Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+    <style>
+        /* Enhanced Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #1a1a1a;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+        .navbar-brand {
+            color: #f1c40f !important;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link {
+            color: #ddd !important;
+            font-weight: 500;
+        }
+        .jumbotron {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), url('https://cdn.prod.website-files.com/63ceb297a38c12e545e5d951/66353df10f4ee7ed37e50a36_BlogPost_Jumbotron_1920x1080.jpg') no-repeat center center;
+            background-size: cover;
+            color: #fff;
+            padding: 6rem 2rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            position: relative;
+        }
+        .jumbotron h1 {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+        .jumbotron p {
+            font-size: 1.5rem;
+        }
+        .jumbotron .btn {
+            font-size: 1.2rem;
+            margin: 0 1rem;
+            transition: transform 0.3s ease;
+        }
+        .jumbotron .btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Unique diagonal split for About Section */
+        .about-section {
+            position: relative;
+            background-color: #2c3e50;
+            color: white;
+            padding: 5rem 0;
+        }
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, #f39c12, #2c3e50);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+            z-index: -1;
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .about-text {
+            max-width: 500px;
+        }
+        .about-img {
+            max-width: 400px;
+        }
+        .about-img img {
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Feature cards with more dynamic effects */
+        .feature-section {
+            padding: 4rem 0;
+        }
+        .feature-card {
+            background-color: #fff;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        .feature-card i {
+            color: #f39c12;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Section Enhancement */
+        .stats-section {
+            background-color: #2c3e50;
+            color: #f1c40f;
+            padding: 3rem 0;
+        }
+        .stats-section h3 {
+            font-size: 2.5rem;
+        }
+        .stats-section p {
+            font-size: 1.5rem;
+        }
+
+        /* Footer Redesign */
+        footer {
+            background-color: #1a1a1a;
+            padding: 2rem 0;
+            color: #fff;
+        }
+        footer a {
+            color: #f39c12;
+        }
+        footer a:hover {
+            text-decoration: none;
+        }
+        footer .social-icons a {
+            margin: 0 1rem;
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Remote Job Search</a>
-        <div class="collapse navbar-collapse">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#"><i class="fas fa-briefcase"></i> Remote Job Search</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                <li class="nav-item"><a class="nav-link" href="#tools">Job Tools</a></li>
                 <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
                 <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Hero Section / Jumbotron -->
     <div class="jumbotron text-center">
-        <h1>Welcome to Remote Job Search</h1>
-        <p>Find the perfect job or post one!</p>
-        <a href="/signup" class="btn btn-primary btn-lg">Sign Up</a>
-        <a href="/login" class="btn btn-secondary btn-lg">Login</a>
+        <div class="container">
+            <h1>Find Your Dream Remote Job</h1>
+            <p>Explore thousands of remote jobs in tech, marketing, design, and more.</p>
+            <a href="/signup" class="btn btn-warning btn-lg"><i class="fas fa-user-plus"></i> Sign Up</a>
+            <a href="/login" class="btn btn-outline-light btn-lg"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </div>
     </div>
 
-    <footer class="text-center">
-        <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
-    </footer>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2>About Remote Job Search</h2>
+                <p>We connect talented professionals with the best remote job opportunities from leading companies worldwide. Our platform helps job seekers find flexible and rewarding work-from-home jobs in various fields.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://www.shutterstock.com/image-photo/stockholm-sept-25-2015-lcd-260nw-321022091.jpg" alt="About Image">
+            </div>
+        </div>
+    </section>
+
+
+
+
+        <!-- Stats Section -->
+        <div class="stats-section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>100,000+</h3>
+                        <p>Remote Jobs Posted</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>50,000+</h3>
+                        <p>Active Job Seekers</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>2,000+</h3>
+                        <p>Hiring Companies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Features Section -->
+    <section id="features" class="feature-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="card feature-card p-4">
+                        <i class="fas fa-laptop"></i>
+                        <h4>Work Anywhere</h4>
+                        <p>Find jobs that let you work from the comfort of your home or anywhere in the world.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card p-4">
+                        <i class="fas fa-search"></i>
+                        <h4>Thousands of Jobs</h4>
+                        <p>Browse from thousands of verified remote job listings from trusted companies.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card p-4">
+                        <i class="fas fa-users"></i>
+                        <h4>Community Support</h4>
+                        <p>Join a community of like-minded professionals for networking and collaboration.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    
+
+ <!-- Job Tools Section -->
+ <div id="tools" class="info-section text-center">
+    <div class="container">
+        <h2>Essential Job Tools</h2>
+        <p>Use these free tools to enhance your job search and improve your chances of landing the perfect role.</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-custom p-4">
+                    <i class="fas fa-check fa-3x mb-3 text-primary"></i>
+                    <h4>Resume Builder</h4>
+                    <p>Create a professional resume with our easy-to-use resume builder tool.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-custom p-4">
+                    <i class="fas fa-chart-line fa-3x mb-3 text-primary"></i>
+                    <h4>Job Tracking</h4>
+                    <p>Track your job applications and keep notes of your interview progress.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-custom p-4">
+                    <i class="fas fa-envelope-open-text fa-3x mb-3 text-primary"></i>
+                    <h4>Cover Letter Generator</h4>
+                    <p>Create custom cover letters tailored to each job application.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Partnership Section -->
+<section id="partnership" class="text-center py-5">
+    <div class="container">
+        <h2 class="mb-4 custom-title">In Partnership with</h2>
+        <p class="lead mb-5">We proudly collaborate with these companies, working together to drive innovation and success.</p>
+
+        <div class="row justify-content-center">
+            <!-- Partner 1 -->
+            <div class="col-6 col-md-3 mb-4">
+                <a href="https://dantechs.vercel.app/" target="_blank">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D0BAQH_bycLIrngxg/company-logo_100_100/company-logo_100_100/0/1728219505684?e=1736985600&v=beta&t=z9YbugyPbzaEDKeTAM9K6WiHnHymKPgbaFQsGUJGPSI" alt="DanTechs" class="img-fluid partner-logo rounded-circle">
+                </a>
+                <h6 class="mt-3">DanTechs</h6>
+            </div>
+            <!-- Partner 2 -->
+            <div class="col-6 col-md-3 mb-4">
+                <a href="https://dandevs.netlify.app/" target="_blank">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQHmh-7IMo7AWg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1723920708209?e=1734566400&v=beta&t=w7k09zsGf2TmtuGDNatI7r12Lv6RNE7LNwO2VGcr3Fo" alt="Daniel" class="img-fluid partner-logo rounded-circle">
+                </a>
+                <h6 class="mt-3">Daniel</h6>
+            </div>
+            <!-- Partner 3 -->
+            <div class="col-6 col-md-3 mb-4">
+                <a href="https://www.google.com/search?q=julinbarbier&oq=juli&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgoIARAuGLEDGIAEMgYIAhBFGDkyDAgDECMYJxiABBiKBTIGCAQQRRg9MgYIBRBFGD0yBggGEEUYPDIGCAcQRRg80gEIMjQ3M2owajeoAgCwAgA&sourceid=chrome&ie=UTF-8#vhid=IJjL97WAUBsP9M:&vssid=l" target="_blank">
+                    <img src="https://tecxposition.com/wp-content/uploads/2020/11/Julien-Barbier-bw.jpg" alt="Julien-Barbier" class="img-fluid partner-logo rounded-circle">
+                </a>
+                <h6 class="mt-3">Julien-Barbier</h6>
+            </div>
+            <!-- Partner 4 -->
+            <div class="col-6 col-md-3 mb-4">
+                <a href="https://www.alxafrica.com/" target="_blank">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D0BAQH53OwgtyEsWw/company-logo_200_200/company-logo_200_200/0/1700462317927/alxafrica_logo?e=2147483647&v=beta&t=h0rpA0Sr-OcVaorl53aTSgAQCvFURL1YqH8yeH4pb5c" alt="ALX" class="img-fluid partner-logo rounded-circle">
+                </a>
+                <h6 class="mt-3">ALX</h6>
+            </div>
+            <!-- Partner 5 -->
+            <div class="col-6 col-md-3 mb-4">
+                <a href="https://www.linkedin.com/" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" class="img-fluid partner-logo rounded-circle">
+                </a>
+                <h6 class="mt-3">LinkedIn</h6>
+            </div>
+            <!-- Partner 6 -->
+            <div class="col-6 col-md-3 mb-4">
+                <a href="https://github.com" target="_blank">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmrGmeBv3SOLSKz6OlTVlVYkfH9_W3BBgdrA&s" alt="GitHub" class="img-fluid partner-logo rounded-circle">
+                </a>
+                <h6 class="mt-3">GitHub</h6>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CSS Styles -->
+<style>
+    /* Google Font Import */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+    #partnership {
+        background-color: #f9f9f9;
+        border-top: 5px solid #007bff;
+        padding: 60px 0;
+    }
+
+    .custom-title {
+        font-family: 'Montserrat', sans-serif;
+        color: #007bff; /* Custom color */
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 2rem; /* Adjust size as needed */
+    }
+
+    #partnership p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 30px;
+    }
+
+    .partner-logo {
+        max-width: 150px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        border: 3px solid #ddd;
+        padding: 10px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .partner-logo:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h6 {
+        color: #333;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+
+    @media (max-width: 768px) {
+        .custom-title {
+            font-size: 1.8rem;
+        }
+        .partner-logo {
+            max-width: 120px;
+        }
+    }
+</style>
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <!-- Footer Top Section -->
+        <div class="row">
+            <!-- About Us Section -->
+            <div class="col-md-4">
+                <h5>About Remote Job Search</h5>
+                <p>We help companies find the best remote talent while providing job seekers access to a wide range of opportunities. Join us in shaping the future of work.</p>
+            </div>
+
+            <!-- Quick Links Section -->
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Post a Job</a></li>
+                    <li><a href="#">Browse Jobs</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Signup Section -->
+            <div class="col-md-4">
+                <h5>Stay Updated</h5>
+                <p>Subscribe to our newsletter to receive the latest job postings and hiring tips!</p>
+                <form action="#" class="newsletter-form">
+                    <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email">
+                    <button type="submit" class="btn btn-primary mt-2">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="footer-divider">
+
+        <!-- Social Icons and Copyright Section -->
+        <div class="footer-bottom row">
+            <div class="col-md-6 text-center text-md-left">
+                <p>&copy; 2024 Remote Job Search. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-right">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- CSS Styling for the Footer -->
+<style>
+    .footer {
+        background-color: #343a40;
+        color: #fff;
+        padding: 40px 0;
+    }
+    .footer h5 {
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+        color: #f8f9fa;
+    }
+    .footer p {
+        font-size: 0.9rem;
+        color: #dcdcdc;
+    }
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+    .footer-links li a {
+        color: #f8f9fa;
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+    .footer-links li a:hover {
+        color: #007bff;
+        text-decoration: underline;
+    }
+    .newsletter-form input {
+        background-color: #495057;
+        border: none;
+        padding: 10px;
+        color: #fff;
+    }
+    .newsletter-form input::placeholder {
+        color: #dcdcdc;
+    }
+    .newsletter-form button {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        color: #fff;
+        cursor: pointer;
+    }
+    .newsletter-form button:hover {
+        background-color: #0056b3;
+    }
+    .footer-divider {
+        border-top: 1px solid #495057;
+        margin: 30px 0;
+    }
+    .social-icons a {
+        color: #fff;
+        margin: 0 10px;
+        font-size: 1.2rem;
+    }
+    .social-icons a:hover {
+        color: #007bff;
+    }
+    .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    @media (max-width: 767px) {
+        .footer-bottom {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+</style>
+
+
+    <!-- Bootstrap and JS scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
